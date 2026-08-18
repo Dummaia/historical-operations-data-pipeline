@@ -1,0 +1,32 @@
+[pipeline]
+file_patterns = ["*.xlsx", "*.xlsm"]
+expected_sheets = [
+  "Overdue",
+  "0 to 7 Days",
+  "8 to 15 Days",
+  "16 to 25 Days",
+  "26 to 35 Days",
+]
+required_columns = [
+  "LINE_ID",
+  "REQUEST_ID",
+  "CURRENT_STAGE",
+  "FOLLOW_UP_NOTES",
+  "SLA_DAYS_REMAINING",
+  "SLA_STATUS",
+]
+id_column = "LINE_ID"
+request_column = "REQUEST_ID"
+follow_up_notes_column = "FOLLOW_UP_NOTES"
+strict_sheets = true
+
+[output]
+parquet_filename = "historical_operations.parquet"
+excel_filename = "historical_operations.xlsx"
+quality_filename = "quality_report.json"
+
+[postgres]
+schema = "analytics"
+table = "historical_operations"
+if_exists = "replace"
+chunksize = 5000
