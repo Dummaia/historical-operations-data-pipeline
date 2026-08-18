@@ -32,7 +32,7 @@ classifiers = [
   "Topic :: Office/Business",
 ]
 dependencies = [
-  "numpy>=1.26,<2.4",
+  "numpy>=1.26,<2.5",
   "openpyxl>=3.1",
   "pandas>=2.2",
   "pyarrow>=15",
